@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Officer</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-4">
+<h3>Add Officer</h3>
+<form method="POST">
+    <div class="mb-2"><label>Username</label><input name="username" class="form-control" required></div>
+    <div class="mb-2"><label>Password</label><input name="password" type="password" class="form-control" placeholder="Leave blank for default: 12345678"></div>
+    <div class="mb-2">
+        <label>Assign Unit</label>
+        <select name="unit_id" class="form-control" required>
+            {% for u in units %}
+            <option value="{{ u['id'] }}">{{ u['name'] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn-primary">Add Officer</button>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back</a>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Officer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background: #f5f5f5;
+        }
+        .approved { color: green; font-weight: bold; }
+        .pending { color: orange; font-weight: bold; }
+        .rejected { color: red; font-weight: bold; }
+        .btn {
+            padding: 6px 12px;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Officer Dashboard</h2>
+<p><strong>Unit:</strong> {{ unit }}</p>
+
+<div style="margin-bottom: 15px;">
+    <a href="{{ url_for('change_password') }}" style="background: #ffc107; margin-right: 5px;">Change Password</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+{% if students %}
+<table>
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Matric No</th>
+            <th>Department</th>
+            <th>Level</th>
+            <th>Status</th>
+            <th>Remark</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in students %}
+        <tr>
+            <td>{{ s.full_name }}</td>
+            <td>{{ s.matric_no }}</td>
+            <td>{{ s.department }}</td>
+            <td>{{ s.level }}</td>
+            <td class="{{ s.status }}">
+                {{ s.status|capitalize }}
+            </td>
+            <td>
+                {{ s.remark if s.remark else "-" }}
+            </td>
+            <td>
+                <a class="btn"
+                   href="{{ url_for('review_student_page', student_id=s.id) }}">
+                   Review
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No students assigned to this unit yet.</p>
+{% endif %}
+
+</body>
+</html>
