@@ -1,0 +1,47 @@
+/* Simple, responsive login CSS */
+:root{
+  --bg1:#0f172a;
+  --bg2:#0b2545;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#2563eb;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(135deg,rgba(15,23,42,0.8),rgba(11,37,69,0.8)),url('https://via.placeholder.com/1200x800?text=Background');
+  background-attachment:fixed;
+  background-size:cover;
+  background-position:center;
+  color:#0b1220;
+  -webkit-font-smoothing:antialiased;
+}
+.login-page{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative}
+.logo{width:100px;height:100px;object-fit:contain;margin-bottom:24px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))}
+.card{width:100%;max-width:420px;background:var(--card);border-radius:12px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+.brand{margin:0 0 6px 0;font-size:1.6rem}
+.lead{margin:0 0 18px 0;color:var(--muted)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:0.9rem;margin-bottom:6px;color:#111827}
+.field input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #e6e9ef;font-size:1rem}
+.pw-wrap{display:flex;gap:8px}
+.pw-wrap input{flex:1}
+#togglePw{background:transparent;border:1px solid #e6e9ef;border-radius:8px;padding:8px 10px;cursor:pointer}
+.controls{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px 0}
+.checkbox{font-size:0.9rem;color:var(--muted)}
+.forgot{font-size:0.9rem;color:var(--accent);text-decoration:none}
+.btn{display:block;width:100%;padding:12px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--accent);color:white}
+.status{margin-top:12px;font-size:0.95rem;color:var(--muted)}
+.error{color:#dc2626;display:block;height:18px;font-size:0.85rem}
+.signup{margin-top:14px;text-align:center;color:var(--muted)}
+.signup a{color:var(--accent);text-decoration:none}
+
+@media (prefers-color-scheme:dark){
+  :root{--card:#0b1220;--muted:#9ca3af}
+  .card{box-shadow:0 8px 26px rgba(2,6,23,0.7)}
+  .field input{background:#0b1220;border:1px solid #1f2937;color:#e6eef8}
+  #togglePw{border:1px solid #1f2937;color:#e6eef8}
+}
